@@ -31,6 +31,23 @@ const AppStack = () => (
         <Stack.Screen
             name='Details'
             component={SingleViewScreen}
+            options={({ route }) => ({
+            title: route.params.title,
+            headerBackTitleVisible: true,
+            headerBackTitle:'Back to List',
+            headerBackTitleStyle: {
+                color: '#fff',
+            },
+            headerStyle: {
+                backgroundColor: '#a21caf',
+                alignItems: 'center',
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: '#fff',
+            }
+
+        })}
         />
       </Stack.Navigator>
   </NavigationContainer>

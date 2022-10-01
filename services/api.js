@@ -53,6 +53,7 @@ export const getSearch = async (category,option, query) => {
     const response = await dataAxios.get(url, {params});
 
     const content= response.data.results;
+    console.log(content);
 
     return content;
 
@@ -71,7 +72,7 @@ export const getOne = async (category,id) => {
     try{
     const params = {
         api_key: API_KEY,
-        language: 'en-US',
+        language: 'en-US'
         }
 
     const dataAxios = await axios.create({
@@ -81,7 +82,7 @@ export const getOne = async (category,id) => {
 
     const response = await dataAxios.get(url, {params});
 
-    const content= response.data.results;
+    const content= response.data;
 
     return content;
 

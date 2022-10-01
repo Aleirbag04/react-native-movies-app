@@ -5,6 +5,8 @@ import {getData, getSearch} from '../../services/api';
 import Loading from '../layout/Spinner';
 import ContentList from '../lists/ContentList';
 import {Ionicons} from '@expo/vector-icons';
+import AlertMessage from '../layout/AlertMessage';
+
 
 const ListContainer = ({navigation, options,page, query})=> {
  const [isLoading, setIsLoading] = useState(false);
@@ -12,11 +14,13 @@ const ListContainer = ({navigation, options,page, query})=> {
  const [category, setCategory] = useState(page);
  const [data, setData] = useState([]);
  const [label, setLabel] = useState('Select option');
+ const [alert, setAlert] = useState(false);
 // const {options, page, query} = props;
 
 
     const searchButton = () => {
     if (query){
+        setAlert(false);
         setIsLoading(true);
         getSearch(category, option, query)
         .then(data => {
@@ -24,6 +28,10 @@ const ListContainer = ({navigation, options,page, query})=> {
             setIsLoading(false);
         })
         .catch(error => console.log(error));
+    }
+    else {
+        setAlert(true);
+
     }
 
     }
@@ -90,6 +98,7 @@ const ListContainer = ({navigation, options,page, query})=> {
 
                 </HStack>
 
+
                   ) :
                   (
                    <Box alignSelf="center" p='3'>
@@ -98,6 +107,9 @@ const ListContainer = ({navigation, options,page, query})=> {
                     )}
 
           </Center>
+                          <Box>
+                              {alert ? <AlertMessage message='Please enter a search term'/> : null}
+                          </Box>
             <Box w='100%' h='100%'>
                 {isLoading ? (
                 <Loading/> ) : (

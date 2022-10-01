@@ -23,7 +23,7 @@ const SearchResultsScreen = ({navigation, route}) => {
         <View>
 
         <SearchInput onChangeInput={handleInput}/>
-            {isFocused && <ListContainer options={options} page={route.name}  query={query}/>}
+            {isFocused && <ListContainer options={options} page={route.name}  query={query} navigation={navigation}/>}
 
         </View>
     );

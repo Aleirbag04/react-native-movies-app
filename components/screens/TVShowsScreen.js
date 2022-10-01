@@ -15,7 +15,7 @@ const TVShowsScreen = ({navigation, route}) => {
     const isFocused = useIsFocused();
     return (
         <View>
-            {isFocused && <ListContainer options={options} page={route.name}/>}
+            {isFocused && <ListContainer options={options} page={route.name} navigation={navigation}/>}
         </View>
     );
 }

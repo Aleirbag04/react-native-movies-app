@@ -17,7 +17,7 @@ const MoviesScreen = ({navigation, route}) => {
 
     return (
         <View>
-        {isFocused && <ListContainer options={options} page={route.name}/>}
+        {isFocused && <ListContainer options={options} page={route.name} navigation={navigation}/>}
         </View>
     );
 }

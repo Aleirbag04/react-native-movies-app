@@ -1,7 +1,8 @@
 import {Box, Center, Select, CheckIcon, Text, Button,Image, HStack} from 'native-base';
 
 const Card = props => {
-    const {title, image, popularity, release_date, id, category,navigation} = props;
+    const {title, image, popularity, release_date, id, category, navigation} = props;
+
 
     return (
         <Box
@@ -28,13 +29,8 @@ const Card = props => {
             <Text mt="0.5" fontSize="sm">Popularity: {popularity}</Text>
             <Text mt="0.5" fontSize="sm">Release Date: {release_date}</Text>
             <Button
+            onPress={() => navigation.navigate('Details', {id, category, title})}
             variant='ghost'
-            onPress={() => {
-            navigation.navigate('Details', {
-                id,
-                category
-             })
-            }}
             >
             More Details
             </Button>
